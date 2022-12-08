@@ -1,4 +1,4 @@
-## C# 大作业 Snake
+## GPT train code 
 
-> 贪吃蛇 C# 代码
+this is a code about training gpt
 
