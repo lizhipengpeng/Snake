@@ -65,17 +65,13 @@ def main():
     args = parser.parse_args()
     print('args:\n' + args.__repr__())
 
-    if args.segment:
-        from tokenizations import tokenization_bert_word_level as tokenization_bert
-    else:
-        from tokenizations import tokenization_bert
 
     os.environ["CUDA_VISIBLE_DEVICES"] = args.device  # 此处设置程序使用哪些显卡
     model_config = transformers.GPT2Config.from_json_file(args.model_config)
     print('config:\n' + model_config.to_json_string())
     
     n_ctx = model_config.n_ctx
-    full_tokenizer = tokenization_bert.BertTokenizer(vocab_file=args.tokenizer_path)
+    full_tokenizer = transformers.BertTokenizer(vocab_file=args.tokenizer_path)
     full_tokenizer.max_len = 999999
     # device = 'cuda' if torch.cuda.is_available() else 'cpu'
     device = "cpu"
